@@ -1,6 +1,7 @@
 package com.innoit.domain.model.price;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.innoit.domain.model.common.Constants;
 import lombok.*;
 
 import java.io.Serializable;
@@ -13,7 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class CalculatePrice implements Serializable {
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
+
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = Constants.PATTERN_DATE_AND_TIME)
     private LocalDateTime applicationDate;
     private String productId;
     private String brandId;

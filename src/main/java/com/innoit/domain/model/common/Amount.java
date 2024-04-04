@@ -1,5 +1,6 @@
 package com.innoit.domain.model.common;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.io.Serializable;
@@ -12,7 +13,8 @@ import java.util.Currency;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Amount implements Serializable,Comparable<Amount> {
-    
+
+    @JsonFormat(pattern=Constants.PATTERN_NUMBER_FORMAT)
     private BigDecimal price;
     private Currency currency;
 

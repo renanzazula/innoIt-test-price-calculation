@@ -22,7 +22,7 @@ considere adecuado para los mismos).
     - request body example:
       ````
       {
-      "applicationDate": "2020-06-14T16:45:07.719",
+      "applicationDate": "2020-06-14T16:45:07Z",
       "brandId": "1",
       "productId": "35455"
       }
