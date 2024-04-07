@@ -28,5 +28,5 @@ considere adecuado para los mismos).
       }
       ````
 
-
+---
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=renanzazula_innoIt-test-price-calculation)](https://sonarcloud.io/summary/new_code?id=renanzazula_innoIt-test-price-calculation)

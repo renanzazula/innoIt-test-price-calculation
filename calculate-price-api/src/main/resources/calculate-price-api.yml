@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Swagger Calculate Price
+  description: Calculate the price Api
+  contact:
+    email: renanzazula@gmail.com
+  version: 0.0.1
+tags:
+  - name: Calculate Price
+    description: Calculate the price by considering the application date, product, and brand.
+paths:
+  /calculate/price:
+    post:
+      tags:
+        - price
+      summary: Calculate the price by considering the application date, product, and brand.
+      description: Calculate the price by considering the application date, product, and brand.
+      operationId: calculatePrice
+      requestBody:
+        description: Calculate Price
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculatePrice'
+        required: true
+      responses:
+        '200':
+          description: Available considering the application date, product, and brand
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Price'
+        '400':
+          description: Error bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal serve error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CalculatePrice:
+      type: object
+      required:
+        - brandId
+        - productId
+        - applicationDate
+      properties:
+        brandId:
+          type: string
+        productId:
+          type: string
+        applicationDate:
+          type: string
+          format: date-time
+    Price:
+      type: object
+      properties:
+        brandId:
+          type: string
+        productId:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        amount:
+          $ref: '#/components/schemas/Amount'
+    Amount:
+      type: object
+      properties:
+        price:
+          type: string
+          format: decimal
+        currency:
+          $ref: '#/components/schemas/Currency'
+    Currency:
+      type: string
+      enum: [USD, EUR, GBP]
+    ErrorResponse:
+      type: object
+      properties:
+        httpStatus:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+        clazz:
+          type: string
+        method:
+          type: string
+        line:
+          type: integer
+          format: int32
+  requestBodies:
+    Price:
+      description: calculated price object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Price'
